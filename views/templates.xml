@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+    <template id="delivery_images.website_sale_delivery_templates" inherit_id="website_sale_delivery.payment_delivery" name="delivery_images_website_sale_delivery_templates">
+      <xpath expr="//li[@class='list-group-item o_delivery_carrier_select']" position="replace">
+        <li class="list-group-item o_delivery_carrier_select">
+              <t t-if="delivery.product_id.image_1920">
+                  <span t-field="delivery.product_id.image_1920" style="padding-right:20px" t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max drim-zoom-pane tp-zoom-pane drift-open tp-open drift-inline tp-inline'}">
+                </span>
+              </t>
+              <t t-else="">
+              <span t-field="delivery.product_id.image_1920" style="padding-right:20px; visibility:hidden" t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'light rounded o_image_64_max'}"/>
+              </t>
+              <t t-call="website_sale_delivery.payment_delivery_methods" />             
+            <!--<span t-field="delivery.product_id.image_1920" t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}"/>-->
+        </li>
+      </xpath>
+    </template>
+<!--
+        <template id="listing">
+          <ul>
+            <li t-foreach="objects" t-as="object">
+              <a t-attf-href="#{ root }/objects/#{ object.id }">
+                <t t-esc="object.display_name"/>
+              </a>
+            </li>
+          </ul>
+        </template>
+        <template id="object">
+          <h1><t t-esc="object.display_name"/></h1>
+          <dl>
+            <t t-foreach="object._fields" t-as="field">
+              <dt><t t-esc="field"/></dt>
+              <dd><t t-esc="object[field]"/></dd>
+            </t>
+          </dl>
+        </template>
+-->
+    </data>
+</odoo>
